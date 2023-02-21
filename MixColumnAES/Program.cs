@@ -11,28 +11,29 @@ namespace MixColumnAES
         static void Main(string[] args)
         {
             Console.WriteLine(Multiply((byte)0x30, (byte)0x82));
-            Console.WriteLine(MixColumn());
+            byte[] list1 = new byte[] { 0x63, 0x30, 0x63, 0x30 };
+            Console.WriteLine(MixColumn(list1));
             Console.Read();
         }
         public const byte MUL_CONSTANT = 0x1B;
 
-        public static string MixColumn()
+        public static string MixColumn(byte[] vector)
         {
             string result;
-            result = $"{Multiply(0x02, 0x63)} {Multiply(0x03,0x7c)}  {Multiply(0x01, 0x63)} {Multiply(0x01, 0x7c)}" +
-                    $"\n{Multiply(0x01, 0x63)} {Multiply(0x02, 0x7c)} {Multiply(0x03, 0x63)} {Multiply(0x01, 0x7c)}" +
-                    $"\n{Multiply(0x01, 0x63)} {Multiply(0x01, 0x7c)} {Multiply(0x02, 0x63)} {Multiply(0x03, 0x7c)}" +
-                    $"\n{Multiply(0x03, 0x63)} {Multiply(0x01, 0x7c)} {Multiply(0x01, 0x63)} {Multiply(0x02, 0x7c)}";
+            result = $"{Multiply(0x02, vector[0])} {Multiply(0x03, vector[1])}  {Multiply(0x01, vector[2])} {Multiply(0x01, vector[3])}" +
+                    $"\n{Multiply(0x01, vector[0])} {Multiply(0x02, vector[1])} {Multiply(0x03, vector[2])} {Multiply(0x01, vector[3])}" +
+                    $"\n{Multiply(0x01, vector[0])} {Multiply(0x01, vector[1])} {Multiply(0x02, vector[2])} {Multiply(0x03, vector[3])}" +
+                    $"\n{Multiply(0x03, vector[0])} {Multiply(0x01, vector[1])} {Multiply(0x01, vector[2])} {Multiply(0x02, vector[3])}";
                 return result;
         }
 
 
-        public static byte Multiply(byte multiplier, int multiplicand)
+        /*public static byte Multiply(byte multiplier, int multiplicand)
         {
             return Multiply(multiplier, (byte)multiplicand);
-        }
+        }*/
 
-        public static byte Multiply(byte multiplier, byte multiplicand)
+        public static string Multiply(byte multiplier, byte multiplicand)
         {
             byte result;
 
@@ -66,7 +67,9 @@ namespace MixColumnAES
                 }
             }
 
-            return result;
+            string hexValue = result.ToString("X");
+
+            return hexValue;
         }
     }
     
