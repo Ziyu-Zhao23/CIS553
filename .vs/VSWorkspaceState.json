@@ -1,4 +1,10 @@
 {
-  "ExpandedNodes": [],
+  "ExpandedNodes": [
+    "",
+    "\\DecryptionRSA",
+    "\\DecryptionRSA1",
+    "\\SHA-3"
+  ],
+  "SelectedNode": "\\SHA-3\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

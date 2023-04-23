@@ -8,11 +8,22 @@ namespace MixColumnAES
 {
     public static class RijndaelField
     {
+
         static void Main(string[] args)
         {
             Console.WriteLine(Multiply((byte)0x30, (byte)0x82));
-            byte[] list1 = new byte[] { 0x63, 0x30, 0x63, 0x30 };
+            //byte[] list0 = new byte[] { 0x63, 0x30, 0x63, 0x30 };
+            byte[] list1 = new byte[] { 0xE5, 0xE4, 0x59, 0xEB };
+            byte[] list2 = new byte[] { 0x34, 0x68, 0x84, 0x47 };
+            byte[] list3 = new byte[] { 0x62, 0x8A, 0x59, 0x24 };
+            byte[] list4 = new byte[] { 0x01, 0xF3, 0xB5, 0xC4 };
+
+
+            //Console.WriteLine(MixColumn(list0));
             Console.WriteLine(MixColumn(list1));
+            Console.WriteLine(MixColumn(list2));
+            Console.WriteLine(MixColumn(list3));
+            Console.WriteLine(MixColumn(list4));
             Console.Read();
         }
         public const byte MUL_CONSTANT = 0x1B;
